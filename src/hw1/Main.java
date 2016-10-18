@@ -1,3 +1,5 @@
+package hw1;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,10 +21,12 @@ public class Main {
             TaskSolverEngine taskEngine = new TaskSolverEngine(taskList, numAgents, true);
             taskEngine.solve();
 
-            for (int i = 0; i < order; i++) {
-                System.out.print(PascalTask.valueMap.get(new Pair(order, i + 1)) + " - ");
+            for (int j = 2; j < order; j++) {
+                for (int i = 0; i < order; i++) {
+                    System.out.print(PascalTask.valueMap.get(new Pair(j, i + 1)) + " - ");
+                }
+                System.out.println("1");
             }
-            System.out.println("1");
         }
     }
 
@@ -44,7 +48,14 @@ public class Main {
 
     public static void exercise3(int top, int numAgents) {
         List<Task> taskList = new LinkedList<>();
-        taskList.add(new SieveTask(2, top));
+        List<Integer> candidatePrimes = new LinkedList<>();
+
+
+        for (int i = 2; i <= top; i++) {
+            candidatePrimes.add(i);
+            taskList.add(new SieveTask(i, top));
+        }
+        SieveTask.primes = candidatePrimes;
 
         TaskSolverEngine taskEngine = new TaskSolverEngine(taskList, numAgents, true);
         taskEngine.solve();
@@ -56,7 +67,7 @@ public class Main {
 	// write your code here
         System.out.println("Hello");
         //exercise1(6,4);
-        //exercise2("A,B,C,D,E,F,G",2);
-        exercise3(137, 4);
+        //exercise2("A,B,C,D,E",2);
+        exercise3(100, 11);
     }
 }

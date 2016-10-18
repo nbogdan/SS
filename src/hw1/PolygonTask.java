@@ -1,4 +1,5 @@
-import java.util.HashMap;
+package hw1;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;

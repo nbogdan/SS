@@ -1,3 +1,5 @@
+package hw1;
+
 import java.util.List;
 import java.util.Random;
 
@@ -19,7 +21,15 @@ public class TaskSolverAgent {
 
     public void step() {
         int index = Math.abs(g.nextInt()) % taskPool.size();
-        Task currentTask = taskPool.remove(index);
+        Task currentTask = taskPool.remove(0);
+
+        if(currentTask instanceof SieveTask) {
+            SieveTask t = (SieveTask) currentTask;
+
+            if(!SieveTask.primes.contains(new Integer(t.value))) {
+                return;
+            }
+        }
 
         if(withLog) {
             System.out.print("[" + id + "] Picked task " + currentTask.toString());
