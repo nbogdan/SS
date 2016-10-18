@@ -7,12 +7,16 @@ public class Main {
 
 
     public static void main(String[] args) {
-        runTrial(1000, 100, 4, 2, false);
+        runTrial(1000, 100, 8, 3, false);
     }
 
     public static void runTrial(int numC, int numP, int lifeCycleC, int lifeCycleP, boolean debug){
-        Cricket initialCricket = new Cricket(lifeCycleC,0,numC,0.3,0.3,0.2);
-        Parasite initialParasite = new Parasite(lifeCycleP,0,numP,0.3,0.3,0.2,3,0, 0.3);
+//       Equilibrium at 12
+//
+//       Cricket initialCricket = new Cricket(lifeCycleC,0,numC,0.3,0.3,0.2);
+//        Parasite initialParasite = new Parasite(lifeCycleP,0,numP,0.3,0.3,0.2,3,0, 0.1);
+        Cricket initialCricket = new Cricket(lifeCycleC,0,numC,0.3,0.3,0.6);
+        Parasite initialParasite = new Parasite(lifeCycleP,0,numP,0.3,0.3,0.4,3,0, 0.1);
         List<Population> cricketPopulation = new LinkedList<>();
         List<Population> parasitePopulation = new LinkedList<>();
         int year = 0;
@@ -86,7 +90,7 @@ public class Main {
 
                 totalCLifeSpan /= cSize;
                 totalPLifeSpan /= pSize;
-                System.out.println(year + "\t" + cSize + "\t" + String.format("%.2f", totalCLifeSpan) + "\t" + pSize + "\t" + String.format("%.2f", totalPLifeSpan));
+                System.out.println(year + "\t" + cSize + "\t" + pSize + "\t\t" + year + "\t" + String.format("%.2f", totalCLifeSpan) + "\t" + String.format("%.2f", totalPLifeSpan));
             }
 
 //            try {
